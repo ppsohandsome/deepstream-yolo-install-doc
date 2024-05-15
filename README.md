@@ -147,7 +147,8 @@ git clone或者下载tar然后放到盒子里都行，如果盒子能科学上�
 
 方法二：
 
-<img src="aa.assets/image-20240515093114645.png" alt="image-20240515093114645" style="zoom:50%;" />
+![image-20240515093114645](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/e13aefaa-f977-453a-a048-326d61b67699)
+
 
 
 
@@ -161,27 +162,32 @@ git clone或者下载tar然后放到盒子里都行，如果盒子能科学上�
 
 此处的变化跟之前很大，原来是使用pt-->wts+cfg，现在变为pt-->onnx
 
-<img src="aa.assets/image-20240515093345515.png" alt="image-20240515093345515" style="zoom: 80%;" />
+![image-20240515093345515](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/d4937b36-0ab2-4fc7-8e0d-f0238bf47596)
+
 
 #### 找教程
 
-<img src="aa.assets/image-20240515094727805.png" alt="image-20240515094727805" style="zoom:50%;" />
+![image-20240515094443834](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/e7abbcb7-91ae-4111-8090-2c8e2cebfe6b)
+
 
 doc里面yolov5.md
 
-<img src="aa.assets/image-20240515094847630.png" alt="image-20240515094847630" style="zoom:50%;" />
+![image-20240515094727805](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/4733127a-02d8-4da0-9b2d-8f937f1c3343)
+
 
 教程里是第一步下载yolov5，这一步我们已经完成，跳过
 
 注意看pip下包，后续可能会用到，但是先不下，运行某个py的时候缺啥补啥
 
-<img src="aa.assets/image-20240515095112817.png" alt="image-20240515095112817" style="zoom: 80%;" />
+![image-20240515094847630](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/1e14a4b2-62a3-4f1c-a43a-3ca2a1ab2d73)
+
 
 #### 跟教程
 
 下面注意！！！！！！！！！，最大的坑来了
 
-![image-20240515095247248](aa.assets/image-20240515095247248.png)
+![image-20240515095112817](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/1349ff37-8e2b-4a6a-8acc-cadbbc290056)
+
 
 原来转脚本使用的是一个叫gen_wts.py的东西，取而代之，新文件叫export_yolov5.py，这个文件所属在“<deepstream-yolo-path>/utils中”。
 
@@ -201,29 +207,37 @@ python3 export_yoloV5.py -w yolov5s.pt --dynamic
 
 因为yolo5-7.0版本更新了attempt_load方法，以前接收map_location，现在接收device，但是本质上是一个东西。下图是yolo5-7.0与yolo5-6.0对比。
 
-<img src="aa.assets/image-20240515100228969.png" alt="image-20240515100228969"  />
+![image-20240515095247248](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/ad8a6d6c-5020-4f22-80bc-ee55509600f6)
 
-<img src="aa.assets/image-20240515100306046.png" alt="image-20240515100306046"  />
+
+![image-20240515100228969](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/c4129803-ca4c-4fed-a83d-ea54adbfee48)
+
 
 所以修改export_yolov5.py中的报错行，将device改为map_location
 
-<img src="aa.assets/image-20240515100801473.png" alt="image-20240515100801473" style="zoom: 67%;" />
+![image-20240515100306046](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/8bea9380-1cbc-4d18-8f98-adc37d61d8ae)
+
 
 ##### 报错2：model.name  type：list，has no attribute key（）
 
 报错原因具体来说是生成labels.py的时候，字典数据类型变成了list数据类型。
 
-<img src="aa.assets/image-20240515101515015.png" alt="image-20240515101515015" style="zoom: 80%;" />
+![image-20240515101515015](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/a6d4d86b-5165-4e37-8cdf-cad533a62e42)
+
+
 
 找到报错行，将key和value删掉，加上一行"print(name)" 测试是否正常。
 
-![image-20240515101411446](aa.assets/image-20240515101411446.png)
+![image-20240515101411446](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/adb8b300-d548-4d5d-94c5-d2b6d9b11548)
+
+
 
 ##### 报错3：onnx version 17 don‘t support
 
 报错原因是yolov5-7.0默认使用torch版本过高，onnx不支持
 
-![image-20240515101812945](aa.assets/image-20240515101812945.png)
+![image-20240515101812945](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/5d0004ad-c577-4294-8c12-c45bd1109cc7)
+
 
 直接将default减小，从17到12都试一试，找到不报错的版本就行。
 
@@ -231,7 +245,8 @@ python3 export_yoloV5.py -w yolov5s.pt --dynamic
 
 教程第五步
 
-![image-20240515102120418](aa.assets/image-20240515102120418.png)
+![image-20240515102120418](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/3386bb2e-afe2-4697-b8c8-5baddee3d376)
+
 
 此时onnx和lable.txt 正常产生，两个文件复制到deepstream-Yolo中
 
@@ -241,11 +256,13 @@ python3 export_yoloV5.py -w yolov5s.pt --dynamic
 
 第一种：export变量
 
-![image-20240515102259937](aa.assets/image-20240515102259937.png)
+![image-20240515102501455](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/33357985-f09c-4184-9924-46aca30e5f6e)
+
 
 第二种：更改编译文件，直接写死
 
-![image-20240515102604822](aa.assets/image-20240515102604822.png)
+![image-20240515102604822](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/9d806f78-2cf5-4ae0-8835-41e60a118f0f)
+
 
 随后编译，文档中步骤三的那行命令的意思是，make，nvdsinfer_custom_impl_Yolo，找到此目录中的Makefile文件，clean&make
 
@@ -261,7 +278,8 @@ make -C nvdsinfer_custom_impl_Yolo clean && make -C nvdsinfer_custom_impl_Yolo
 
 根据教程修改两个txt，随后运行
 
-![image-20240515104043293](aa.assets/image-20240515104043293.png)
+![image-20240515104043293](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/58b02bfe-57ee-4bab-876f-0ea6b2bf5f07)
+
 
 出现画面即为成功
 
