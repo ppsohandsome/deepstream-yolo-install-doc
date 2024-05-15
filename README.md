@@ -9,7 +9,8 @@
 
 deepstream-yolo官方更新了所有的branches，只留了一个master（图中1所示），所以曾经的包都不再维护，现在的版本支持所有deepstreamSDK版本（图中2所示）
 
-![image-20240515083127259](aa.assets/image-20240515083127259.png)
+![image-20240515084712489](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/b1d94227-b691-41e5-bae0-3f96c1cfc9da)
+
 
 本文提倡忠于官方文档，所述如何找到官方README并跟随，并给出一些异常处理建议
 
@@ -33,28 +34,34 @@ deepstream-yolo安装
 
 https://developer.nvidia.com/deepstream-sdk
 
-<img src="aa.assets/image-20240515084712489.png" alt="image-20240515084712489" style="zoom:50%;" />
+![image-20240515084732280](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/81fa393b-ab13-4f0c-9d0c-e451a164a620)
 
-<img src="aa.assets/image-20240515084832610.png" alt="image-20240515084832610" style="zoom:50%;" />
 
-<img src="aa.assets/image-20240515084910332.png" alt="image-20240515084910332" style="zoom:50%;" />
+![image-20240515084832610](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/40810ed8-6d9c-4bca-ad51-4eaa181442d4)
+
+
+![image-20240515084910332](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/e8888d82-c99f-4c3e-a81f-84fbfadb4ef0)
+
 
 下载完之后跟随教程，连接如下
 
 https://docs.nvidia.com/metropolis/deepstream/6.0.1/dev-guide/text/DS_Quickstart.html
 
-<img src="aa.assets/image-20240515085456065.png" alt="image-20240515085456065" style="zoom:50%;" />
+![image-20240515085456065](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/fdd54aa4-b20b-4ab4-b251-1c54addbb905)
+
 
 安装完成后测试安装：
 
-<img src="aa.assets/image-20240515090058297.png" alt="image-20240515090058297" style="zoom:50%;" />
+![image-20240515090058297](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/f2b55801-f5e5-44bb-a4d5-d6ab6111e3ab)
+
 
 ```
 例如：
 $ deepstream-app -c samples/configs/deepstream-app/source6_csi_dec_infer_resnet_int8.txt 
 ```
 
-<img src="aa.assets/image-20240515090611987.png" alt="image-20240515090611987" style="zoom: 80%;" />
+![image-20240515090611987](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/d5f4b323-16f2-4bfd-bb6f-ac5a5986f908)
+
 
 success即为成功
 
@@ -66,27 +73,32 @@ https://github.com/ultralytics/yolov5
 
 找到所需branch，进入
 
-<img src="aa.assets/image-20240515090741158.png" alt="image-20240515090741158" style="zoom:50%;" />
+![image-20240515090741158](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/e3327e6f-8bb0-4885-a889-0ed3d8e6eb5b)
+
 
 ### 找到对应教程
 
-<img src="aa.assets/image-20240515090927497.png" alt="image-20240515090927497" style="zoom:50%;" />
+![image-20240515090927497](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/2cff8502-a281-44f7-b844-6afc1a771658)
+
 
 #### 前置依赖安装
 
 根据教程，基本意思就是打开requirement，然后把torch和torchvision注释掉，因为版本需要匹配
 
-<img src="aa.assets/image-20240515091047993.png" alt="image-20240515091047993" style="zoom:50%;" />
+![image-20240515091047993](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/61979b7a-34f1-4810-918d-63d4775108b3)
+
 
 #### torch+torchvision安装
 
 随后安装torch和torchvision，官方已给出如何做版本匹配，点进去
 
-<img src="aa.assets/image-20240515091252864.png" alt="image-20240515091252864" style="zoom:50%;" />
+![image-20240515091252864](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/705945fa-9732-4da0-8bbe-d252dd0b235b)
+
 
 找到自己需要的版本，如何查看jetpack版本自己百度
 
-<img src="aa.assets/image-20240515091525306.png" alt="image-20240515091525306" style="zoom: 33%;" />
+![image-20240515091525306](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/583818ae-6139-4988-abfe-979c65ee453c)
+
 
 下载完之后，进入python环境安装
 
@@ -117,11 +129,13 @@ https://github.com/marcoslucianops/DeepStream-Yolo
 
 阅读github自述文件
 
-<img src="aa.assets/image-20240515092652789.png" alt="image-20240515092652789" style="zoom:50%;" />
+![image-20240515092652789](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/2cc21bf3-e772-4b43-80cb-57cdc63db7c6)
+
 
 官方给出的版本略不匹配，jetpack4.6.4为jetpack4.6的小更新版本，基本适用于jetpack4.6.1
 
-![image-20240515094443834](aa.assets/image-20240515094443834.png)
+
+
 
 ### 下载
 
@@ -129,7 +143,7 @@ git clone或者下载tar然后放到盒子里都行，如果盒子能科学上�
 
 方法一：git
 
-![image-20240515092952144](aa.assets/image-20240515092952144.png)
+![image-20240515092952144](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/3ef16b04-ce9b-4063-aae2-4c8f7e26115f)
 
 方法二：
 
