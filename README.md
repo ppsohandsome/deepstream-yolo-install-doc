@@ -179,14 +179,15 @@ doc里面yolov5.md
 
 注意看pip下包，后续可能会用到，但是先不下，运行某个py的时候缺啥补啥
 
-![image-20240515094847630](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/1e14a4b2-62a3-4f1c-a43a-3ca2a1ab2d73)
+![image-20240515095112817](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/869c7f03-1335-4a32-a8e5-ef1292288b58)
 
 
 #### 跟教程
 
 下面注意！！！！！！！！！，最大的坑来了
 
-![image-20240515095112817](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/1349ff37-8e2b-4a6a-8acc-cadbbc290056)
+![image-20240515095247248](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/c3fa122e-b4ca-408c-b10c-d8a5d075f61e)
+
 
 
 原来转脚本使用的是一个叫gen_wts.py的东西，取而代之，新文件叫export_yolov5.py，这个文件所属在“<deepstream-yolo-path>/utils中”。
@@ -207,28 +208,31 @@ python3 export_yoloV5.py -w yolov5s.pt --dynamic
 
 因为yolo5-7.0版本更新了attempt_load方法，以前接收map_location，现在接收device，但是本质上是一个东西。下图是yolo5-7.0与yolo5-6.0对比。
 
-![image-20240515095247248](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/ad8a6d6c-5020-4f22-80bc-ee55509600f6)
+![image-20240515100228969](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/3e2af7e3-4480-452c-a0ae-530c7cbdb8e1)
 
 
-![image-20240515100228969](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/c4129803-ca4c-4fed-a83d-ea54adbfee48)
+
+![image-20240515100306046](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/8df61918-bed2-4aea-86e8-955b7cd10771)
+
 
 
 所以修改export_yolov5.py中的报错行，将device改为map_location
 
-![image-20240515100306046](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/8bea9380-1cbc-4d18-8f98-adc37d61d8ae)
+![image-20240515100801473](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/20cba8f2-4928-49a2-a3c5-188a301c7b98)
+
 
 
 ##### 报错2：model.name  type：list，has no attribute key（）
 
 报错原因具体来说是生成labels.py的时候，字典数据类型变成了list数据类型。
 
-![image-20240515101515015](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/a6d4d86b-5165-4e37-8cdf-cad533a62e42)
 
+![image-20240515101515015](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/08877fc6-c325-45e8-85ec-3232372ebe56)
 
 
 找到报错行，将key和value删掉，加上一行"print(name)" 测试是否正常。
 
-![image-20240515101411446](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/adb8b300-d548-4d5d-94c5-d2b6d9b11548)
+![image-20240515101411446](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/cfe09ce8-9c2e-49f8-91fa-2b53885cf523)
 
 
 
@@ -236,7 +240,8 @@ python3 export_yoloV5.py -w yolov5s.pt --dynamic
 
 报错原因是yolov5-7.0默认使用torch版本过高，onnx不支持
 
-![image-20240515101812945](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/5d0004ad-c577-4294-8c12-c45bd1109cc7)
+![image-20240515101812945](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/19adfe43-c9bd-4467-aa31-6d459ee8ab9c)
+
 
 
 直接将default减小，从17到12都试一试，找到不报错的版本就行。
