@@ -4,7 +4,8 @@
 
 全文结构如下
 
-<img src="aa.assets/image-20240515104246821.png" alt="image-20240515104246821" style="zoom:50%;" />
+![image-20240515083127259](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/04b28a07-53bb-4636-bd6c-436bc4d3e1f8)
+
 
 deepstream-yolo官方更新了所有的branches，只留了一个master（图中1所示），所以曾经的包都不再维护，现在的版本支持所有deepstreamSDK版本（图中2所示）
 
