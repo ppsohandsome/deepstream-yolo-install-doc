@@ -4,7 +4,8 @@
 
 全文结构如下
 
-![image-20240515083127259](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/04b28a07-53bb-4636-bd6c-436bc4d3e1f8)
+![image-20240515104246821](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/612e5297-de3f-47bc-ada7-a37343211dce)
+
 
 
 deepstream-yolo官方更新了所有的branches，只留了一个master（图中1所示），所以曾经的包都不再维护，现在的版本支持所有deepstreamSDK版本（图中2所示）
@@ -261,12 +262,13 @@ python3 export_yoloV5.py -w yolov5s.pt --dynamic
 
 第一种：export变量
 
-![image-20240515102501455](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/33357985-f09c-4184-9924-46aca30e5f6e)
+![image-20240515102259937](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/ea9d75c3-3d76-44a0-99f2-9493746f5753)
 
 
 第二种：更改编译文件，直接写死
 
-![image-20240515102604822](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/9d806f78-2cf5-4ae0-8835-41e60a118f0f)
+![image-20240515102604822](https://github.com/ppsohandsome/deepstream-yolo-install-doc/assets/143994144/9a86be44-d4ee-4277-a766-642723543bea)
+
 
 
 随后编译，文档中步骤三的那行命令的意思是，make，nvdsinfer_custom_impl_Yolo，找到此目录中的Makefile文件，clean&make
